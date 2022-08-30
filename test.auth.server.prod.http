@@ -1,0 +1,54 @@
+@authToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1MDM2MiwiZXhwIjoxNjM3MTUwNDAyfQ.loOtj5x20TZQGIqT99c4RlmjCoCaOXecYT-X8Y-Ytj8
+@refreshToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1MDIyOH0.mErZx-3uqDK7xq-SEFAXCY_gQlYyHrcMEcIVBOpeyRE
+### Login
+POST {{$dotenv prodUrl}}/token/login HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen",
+    "role" : "admin" 
+}
+
+### Logout
+POST {{$dotenv prodUrl}}/token/logout HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen",
+    "role" : "admin",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYzNzE2MjEyNH0.VxbwzFbyvecrcEjVJx7m-GKWM1S3FNmmevn3Nf_q86Q" 
+}
+
+### Logout
+POST {{$dotenv prodUrl}}/token/logoutfromalldevices HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen" ,
+    "role" : "admin"
+}
+### Refresh
+POST {{$dotenv prodUrl}}/token/refresh HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen",
+    "role" : "admin",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYzNzE2NzUxMH0.gdfZZIjWMHeMJbSIOG84gTaUzEF3vykDqOx9LRreB6Y" 
+}
+
+### Access Database
+POST {{$dotenv prodUrl}}/token/accessdatabase HTTP/1.1
+content-type: application/json 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYzNzE2MjEyNCwiZXhwIjoxNjM3MTY1NzI0fQ.AxTfwhZFbm8zioyJgGamvOGJ7623O2goszhxV8SCPmE
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen",
+    "role" : "admin",
+    "token" : ""
+}

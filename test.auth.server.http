@@ -1,0 +1,54 @@
+@authToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1MDM2MiwiZXhwIjoxNjM3MTUwNDAyfQ.loOtj5x20TZQGIqT99c4RlmjCoCaOXecYT-X8Y-Ytj8
+@refreshToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1MDIyOH0.mErZx-3uqDK7xq-SEFAXCY_gQlYyHrcMEcIVBOpeyRE
+### Login
+POST {{$dotenv localhostAuth}}/token/login HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen",
+    "role" : "admin" 
+}
+
+### Logout
+POST {{$dotenv localhostAuth}}/token/logout HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen",
+    "role" : "admin",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1NTE2N30.Oh1CYQ3Ny-aLtrWQyLY3MB7XDenFVboP0AEM29u4xpc" 
+}
+
+### Logout
+POST {{$dotenv localhostAuth}}/token/logoutfromalldevices HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen" ,
+    "role" : "admin"
+}
+### Refresh
+POST {{$dotenv localhostAuth}}/token/refresh HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen",
+    "role" : "admin",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1NTE2N30.Oh1CYQ3Ny-aLtrWQyLY3MB7XDenFVboP0AEM29u4xpc" 
+}
+
+### Access Database
+POST {{$dotenv localhostAuth}}/token/accessdatabase HTTP/1.1
+content-type: application/json 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1Nzk4MywiZXhwIjoxNjM3MTYxNTgzfQ.IuCo19WqHhPI66AD2X58A1ifRmarS8ibRiq7y3KrG8k
+
+{
+    "email": "aymen@gmail.com",
+    "name" : "Aymen",
+    "role" : "admin",
+    "token" : ""
+}

@@ -1,0 +1,76 @@
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGZjMzJhZjIwYTUzZmYwOTcyZTRlNiIsInJvbGUiOiJzdXBlckFkbWluIiwiaWF0IjoxNjUzNTg4ODQ3LCJleHAiOjE2NTM2MTA0NDd9.klHikAsRnt21q9Z2-SPf36TJemhJTCQQWhQgOL3O8Us
+@refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZmJjYTU1ZjE3MzI5OGZlYmIyMjI3NiIsInJvbGUiOiJzdXBlckFkbWluIiwiaWF0IjoxNjYwNjY4NTM4LCJleHAiOjE2NjA5Mjc3Mzh9.mfSrC4Ac0cx5KYO8qf8xK3L85KwLAovk_Eqlov7IEtg
+
+
+### Login
+POST {{$dotenv AUTH_SERVER_URL}}/user/register HTTP/1.1
+content-type: application/json 
+
+{
+    "id" : "aaaa2aaa",
+    "password" : "dsaa" 
+}
+
+### Login
+POST {{$dotenv AUTH_SERVER_URL}}/user/login HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "ala@gmail.com",
+    "password" : "123456",
+    "role" : "admin" 
+}
+
+### Login Admin
+POST {{$dotenv AUTH_SERVER_URL}}/admin/login HTTP/1.1
+content-type: application/json 
+
+{
+    "email":"alaedinnebenmbarek@gmail.com",
+    "password":"admin"
+}
+
+### Verify Login Admin
+POST {{$dotenv AUTH_SERVER_URL}}/admin/verify-login HTTP/1.1
+content-type: application/json 
+
+{
+    "email":"alaedinnebenmbarek@gmail.com",
+    "actionVerificationCode":849959
+}
+
+### add admin
+POST {{$dotenv AUTH_SERVER_URL}}/admin/add-admin HTTP/1.1
+Authorization: bearer {{token}}
+content-type: application/json 
+
+{
+    "name": "assil",
+    "email":"assilbouhachem@gmail.com",
+    "password":"123456"
+}
+### Refresh
+GET {{$dotenv AUTH_SERVER_URL}}/admin/refresh HTTP/1.1
+Authorization: bearer {{refreshToken}}
+content-type: application/json 
+
+
+
+### forgot password
+POST {{$dotenv AUTH_SERVER_URL}}/admin/forgot-password HTTP/1.1
+content-type: application/json 
+
+{
+    "email":"tliliidris00@gmail.com"
+}
+
+### RESET PASSWORD
+POST {{$dotenv AUTH_SERVER_URL}}/admin/reset-password HTTP/1.1
+Authorization: bearer {{token}}
+content-type: application/json 
+
+{
+    "email":"tliliidris00@gmail.com",
+    "passwordResetCode":132286,
+    "password":"123456"
+}

@@ -1,0 +1,23 @@
+@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsYUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRjM2pTWHRJSGhGL01RYXJUT0huL0ouTVlJT0h1Nnh2cmJXMTZxMmZ5bGZPc3dJM2hGdXJSdSIsImlhdCI6MTY0NTAzNTk2OX0.JbLQkqqJANXB2DiZAG6PLzZ1vgHd1VXZ1q81lyKl6dM
+
+### Login
+POST {{$dotenv CLIENT_SERVER_URL}}/user/register HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "ala@gmail.com",
+    "password" : "123456"
+}
+
+### Login
+POST {{$dotenv CLIENT_SERVER_URL}}/user/login HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "ala@gmail.com",
+    "password" : "123456"
+}
+### Refresh
+GET {{$dotenv CLIENT_SERVER_URLAuth}}/user/refresh HTTP/1.1
+Authorization: bearer {{token}}
+content-type: application/json 

@@ -3,40 +3,53 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const userSchema = new Schema(
   {
-    firstName: String,
-    lastName: String,
-    birthday: Date,
-    profilePicture: String,
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    dateOfBirth: {
+      type: Date,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
       unique: true,
     },
-    phone: {
+    address: {
       type: String,
+      required: true,
     },
-    role: {
+    city: {
       type: String,
-      enum: ["business", "guest", "admin", "superadmin"],
-      default: "guest",
+      required: true,
     },
-    firebaseToken: String,
-    verificationKey: String,
-    isVerified: {
-      type: Boolean,
-      default: false,
+    state: {
+      type: String,
+      required: true,
     },
     country: {
       type: String,
-      enum: ["TUN", "DZA", "MCO"],
-      default: "TUN",
       required: true,
     },
-    BusinessID: {
-      type: Schema.Types.ObjectId,
-      ref: "Business",
+    role: {
+      type: String,
+      enum: ["candidate", "recruiter"],
+      default: "candidate",
+      required: true,
     },
-    fcmToken: String,
+    isVerifid: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

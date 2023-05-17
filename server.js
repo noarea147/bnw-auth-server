@@ -9,7 +9,7 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors());
 app.listen(port, () => {
-    LOG.info(`CaptureGet Authorization Server started on port ${port} [${process.env.NODE_ENV}]`);
+    LOG.info(`ColocQui Authorization Server started on port ${port} [${process.env.NODE_ENV}]`);
 });
 
 config();

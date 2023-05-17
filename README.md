@@ -1,1 +1,1 @@
-# CaptureGet-auth-server
+# foyer-auth-server

@@ -16,8 +16,9 @@ POST {{$dotenv AUTH_SERVER_URL}}/user/login HTTP/1.1
 content-type: application/json 
 
 {
-    "email": "gakim5322s8@agrolivana.com",
-    "password" : "123456789"
+    "email": "ala@gmail.com",
+    "password" : "123456",
+    "role" : "admin" 
 }
 
 ### Login Admin

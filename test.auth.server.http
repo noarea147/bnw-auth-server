@@ -1,7 +1,7 @@
 @authToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1MDM2MiwiZXhwIjoxNjM3MTUwNDAyfQ.loOtj5x20TZQGIqT99c4RlmjCoCaOXecYT-X8Y-Ytj8
 @refreshToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1MDIyOH0.mErZx-3uqDK7xq-SEFAXCY_gQlYyHrcMEcIVBOpeyRE
 ### Login
-POST {{$dotenv localhostAuth}}/token/login HTTP/1.1
+POST {{$dotenv AUTH_SERVER_URL}}/token/login HTTP/1.1
 content-type: application/json 
 
 {

@@ -1,7 +1,5 @@
 /* eslint no-console: "off", func-names: "off" */
 const mongoose = require("mongoose");
-
-
 require("dotenv").config();
 
 module.exports = function () {

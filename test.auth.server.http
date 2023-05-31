@@ -11,7 +11,7 @@ content-type: application/json
 }
 
 ### Logout
-POST {{$dotenv localhostAuth}}/token/logout HTTP/1.1
+POST {{$dotenv MONGO_DB_AUTH_URL}}/token/logout HTTP/1.1
 content-type: application/json 
 
 {
@@ -22,7 +22,7 @@ content-type: application/json
 }
 
 ### Logout
-POST {{$dotenv localhostAuth}}/token/logoutfromalldevices HTTP/1.1
+POST {{$dotenv MONGO_DB_AUTH_URL}}/token/logoutfromalldevices HTTP/1.1
 content-type: application/json 
 
 {
@@ -31,7 +31,7 @@ content-type: application/json
     "role" : "admin"
 }
 ### Refresh
-POST {{$dotenv localhostAuth}}/token/refresh HTTP/1.1
+POST {{$dotenv MONGO_DB_AUTH_URL}}/token/refresh HTTP/1.1
 content-type: application/json 
 
 {
@@ -42,7 +42,7 @@ content-type: application/json
 }
 
 ### Access Database
-POST {{$dotenv localhostAuth}}/token/accessdatabase HTTP/1.1
+POST {{$dotenv MONGO_DB_AUTH_URL}}/token/accessdatabase HTTP/1.1
 content-type: application/json 
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXltZW4iLCJlbWFpbCI6ImF5bWVuQGdtYWlsLmNvbSIsImlhdCI6MTYzNzE1Nzk4MywiZXhwIjoxNjM3MTYxNTgzfQ.IuCo19WqHhPI66AD2X58A1ifRmarS8ibRiq7y3KrG8k
 

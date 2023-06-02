@@ -4,6 +4,9 @@ Authentication server with phone number identification
 # NODE ENVIROMENT
 NODE_ENV=development
 
+#PORTS
+PORT=4000
+
 # DB
 MONGO_DB_AUTH_URL=mongodb://localhost:27017/BNWDatabaseAuthDev
 MONGO_DB_URL=mongodb://localhost:27017/BNWDatabaseDev
@@ -16,4 +19,6 @@ ACCESS_TOKEN_SECRET_REFRESH=90953dad959b6eac5987651651984653cd020c296275aed6a658
 CLIENT_SERVER_URL=http://localhost:3000
 AUTH_SERVER_URL=http://localhost:4000
 
+#FIREBASE CREDENTIALS
+FIREBASE_SERVER_KEY=AAAAZ
 

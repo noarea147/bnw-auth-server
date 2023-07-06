@@ -2,7 +2,7 @@
 @refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZmJjYTU1ZjE3MzI5OGZlYmIyMjI3NiIsInJvbGUiOiJzdXBlckFkbWluIiwiaWF0IjoxNjYwNjY4NTM4LCJleHAiOjE2NjA5Mjc3Mzh9.mfSrC4Ac0cx5KYO8qf8xK3L85KwLAovk_Eqlov7IEtg
 
 
-### Login
+### Register
 POST {{$dotenv AUTH_SERVER_URL}}/user/register HTTP/1.1
 content-type: application/json 
 
@@ -16,9 +16,8 @@ POST {{$dotenv AUTH_SERVER_URL}}/user/login HTTP/1.1
 content-type: application/json 
 
 {
-    "email": "ala@gmail.com",
-    "password" : "123456",
-    "role" : "admin" 
+    "id": "649e9dd603bb16fb5889e578",
+    "password" : "123456"
 }
 
 ### Login Admin

@@ -6,7 +6,7 @@ const LOG = require("../common/helpers/logger");
 require("dotenv").config();
 
 module.exports = function () {
-  const url = process.env.MONGODB_AUTH_URL;
+  const url = process.env.MONGO_DB_AUTH_URL;
   mongoose.connect(url, { useUnifiedTopology: true });
   mongoose.connection
     .once("open", () => {

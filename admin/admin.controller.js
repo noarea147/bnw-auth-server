@@ -1,6 +1,6 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-const AdminModel = require("../common/models/admin.model");
+const AdminModel = require("./admin.model");
 const jwt = require("../common/auth/jwt");
 const LOG = require("../common/helpers/logger");
 const { sendClientEmail } = require("../common/helpers/nodemailer");
@@ -83,15 +83,15 @@ exports.Login = async (req, res) => {
     admin.actionVerificationExpire = Date.now() + 3600000; // 1 hour
     await admin.save();
     const emailData = {
-      from: 'AvoConsulte <contact@avoconsulte.com>',
+      from: 'BNW <smtp@noiroublanc.tn>',
       to: admin.email,
-      subject: "Avoconsulte - Admin Login",
+      subject: "BNW - Admin Login",
       html: `<p>Hi ${admin.name},</p>
-      <p>You are receiving this email because you recently requested to login to your Avoconsulte account. Please enter the following code to verify your account:</p>
+      <p>You are receiving this email because you recently requested to login to your BNW account. Please enter the following code to verify your account:</p>
       <p>${actionVerificationCode}</p>
       <p>If you did not request to login, please ignore this email.</p>
       <p>Thank you,</p>
-      <p>Avoconsulte</p>`,
+      <p>BNW</p>`,
     };
     // send email to the admin trying to log in
     await sendClientEmail(emailData);

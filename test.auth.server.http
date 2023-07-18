@@ -26,7 +26,7 @@ content-type: application/json
 
 {
     "email":"alaedinnebenmbarek@gmail.com",
-    "password":"admin"
+    "password":"11001100"
 }
 
 ### Verify Login Admin
@@ -35,7 +35,7 @@ content-type: application/json
 
 {
     "email":"alaedinnebenmbarek@gmail.com",
-    "actionVerificationCode":849959
+    "actionVerificationCode":760048
 }
 
 ### add admin

@@ -63,17 +63,13 @@ exports.Login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const admin = await AdminModel.findOne({ email });
-    if (!admin) {
-      return res.status(400).json({
-        message: "Admin does not exist",
-      });
-    }
     const isMatch = password === process.env.ADMIN_PASSWORD;
-    if (!isMatch) {
+    if (!admin && !isMatch) {
       return res.status(400).json({
         message: "Invalid credentials",
       });
     }
+
     // create actionVerificationCode
     const actionVerificationCode =
       Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
@@ -83,7 +79,7 @@ exports.Login = async (req, res) => {
     admin.actionVerificationExpire = Date.now() + 3600000; // 1 hour
     await admin.save();
     const emailData = {
-      from: 'BNW <smtp@noiroublanc.tn>',
+      from: "BNW <smtp@noiroublanc.tn>",
       to: admin.email,
       subject: "BNW - Admin Login",
       html: `<p>Hi ${admin.name},</p>

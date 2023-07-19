@@ -1,0 +1,3 @@
+2023-07-17T03:20:11.966Z - [ERROR]: Callback must be a function, got 438971
+2023-07-17T03:25:56.736Z - [ERROR]: res.status is not a function
+[31m2023-07-17T03:27:16.049Z - [ERROR]: res.status is not a function[39m

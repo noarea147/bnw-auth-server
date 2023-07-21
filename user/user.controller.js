@@ -2,6 +2,7 @@ require("dotenv").config();
 const bcrypt = require("bcrypt");
 const UserModel = require("../common/models/authUser.model");
 const jwt = require("../common/auth/jwt");
+const { sendClientEmail } = require("../common/helpers/nodemailer");
 
 function getTokens(user) {
   const payload = {
@@ -74,60 +75,66 @@ exports.RefreshToken = (req, res) => {
 
 exports.ForgotPassword = async (req, res) => {
   try {
-    const user = await UserModel.findOne({ id: req.body.id });
+    const { id, email } = req.body;
+    const user = await UserModel.findOne({ id: id });
     if (!user) {
-      return res.status(400).json({
-        message: "User not found",
-      });
+      return res.json({ message: "User not found", status: "fail" });
     }
-    user.passwordResetCode = req.body.passwordResetCode;
-    user.passwordResetExpire = Date.now() + 3600000; // 1 hour
-    await user.save();
-    res.status(200).json({
-      message: "Password reset code sent successfully",
-      status: "success",
+    const code = Math.floor(Math.random() * (999999 - 100000) + 100000);
+    sendClientEmail({
+      from: process.env.CLIENT_SERVER_INBOX_EMAIL,
+      to: email,
+      subject: "Rest password Code",
+      html: `<h1>Hi noir ou blanc user</h1>
+      <p>This is your rest password code</p>
+      <p>Code : ${code}</p>
+      <p>Best regards</p>
+      <p>N ou B team</p>`,
     });
+
+    user.passwordResetCode = code;
+    await user.save();
+    return res
+      .status(200)
+      .json({ message: "Verification code sent", status: "success" });
   } catch (err) {
-    // LOG.error(err.message);
-    res.status(500).send({ message: err.message, status: "fail" });
+    res
+      .status(500)
+      .send({ message: "could not process request", status: "fail" });
   }
 };
-// Reset Password
+
 exports.ResetPassword = async (req, res) => {
   try {
-    if (!req.body.passwordResetCode) {
-      return res.status(400).json({
-        message: "Password reset code is required",
-      });
-    }
-    const user = await UserModel.findOne({ id: req.body.id });
+    const { id, code, password } = req.body;
+    const user = await UserModel.findOne({ id: id });
     if (!user) {
-      return res.status(400).json({
-        message: "User not found",
+      return res.json({ message: "User not found", status: "fail" });
+    }
+    if (user.passwordResetCode !== parseInt(code)) {
+      return res.json({ message: "Invalid code", status: "fail" });
+    } else if (!password) {
+      return res.json({ message: "Valid code", status: "success" });
+    }
+    if (code && password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user.password = hashedPassword;
+      user.passwordResetCode = null;
+      await user.save();
+      return res.status(200).send({
+        message: "Password reset successfully",
+        status: "success",
+      });
+    } else if (code) {
+      return res.status(200).send({
+        message: "The code is valid",
+        status: "success",
       });
     }
-    if (user.passwordResetCode !== req.body.passwordResetCode) {
-      return res.status(400).json({
-        message: "Invalid password reset code",
-      });
-    }
-    if (user.passwordResetExpire < Date.now()) {
-      return res.status(400).json({
-        message: "Password reset code has expired",
-      });
-    }
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    user.password = hashedPassword;
-    user.passwordResetCode = undefined;
-    user.passwordResetExpire = undefined;
-    await user.save();
-    res.status(200).json({
-      message: "Password reset successfully",
-      status: "success",
-    });
   } catch (err) {
-    // LOG.error(err.message);
-    res.status(500).send({ message: err.message, status: "fail" });
+    res
+      .status(500)
+      .send({ message: "could not process request", status: "fail" });
   }
 };
 //ChangePassword

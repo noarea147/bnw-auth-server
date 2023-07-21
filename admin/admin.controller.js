@@ -1,6 +1,6 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-const AdminModel = require("./admin.model");
+const AdminModel = require("../common/models/admin.model");
 const jwt = require("../common/auth/jwt");
 const LOG = require("../common/helpers/logger");
 const { sendClientEmail } = require("../common/helpers/nodemailer");
@@ -77,7 +77,7 @@ exports.Login = async (req, res) => {
     // update admin.actionVerificationCode
     admin.actionVerificationCode = actionVerificationCode;
     admin.actionVerificationExpire = Date.now() + 3600000; // 1 hour
-    await admin.save();
+    admin.save();
     const emailData = {
       from: "BNW <smtp@noiroublanc.tn>",
       to: admin.email,
@@ -114,6 +114,7 @@ exports.VerifyLogin = async (req, res) => {
         message: "Admin does not exist",
       });
     }
+
     if (admin.actionVerificationCode !== actionVerificationCode) {
       return res.status(400).json({
         message: "Invalid verification code",

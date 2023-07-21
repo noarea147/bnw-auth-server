@@ -36,7 +36,7 @@ content-type: application/json
 {
     "email":"alaedinnebenmbarek@gmail.com",
     "actionVerificationCode": 941997
-}
+
 
 ### add admin
 POST {{$dotenv AUTH_SERVER_URL}}/admin/add-admin HTTP/1.1
